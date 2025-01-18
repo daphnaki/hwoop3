@@ -49,16 +49,12 @@ def get_products(my_cursor) -> list[FoodProduct]:
             category=ProductCategory(one_row['category']),
             production_date=datetime.strptime(one_row['production_date'], '%Y-%m-%d %H:%M:%S'),
             expiration_date=datetime.strptime(one_row['expiration_date'], '%Y-%m-%d %H:%M:%S'),
-            product_id=one_row['id']
         )
         result_products.append(product)
     return result_products
 
 if __name__ == '__main__':
 
-    # Clear existing data (optional, use with caution)
-    cursor.execute("DELETE FROM Products")
-    conn.commit()
 
     product1 = FoodProduct(
         name="Milk",

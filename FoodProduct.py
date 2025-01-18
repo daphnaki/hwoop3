@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 from enum import Enum
-from typing import Union
 
 
 class ProductCategory(Enum):
@@ -9,13 +8,13 @@ class ProductCategory(Enum):
     PARVE = "Parve"
 
 class FoodProduct:
-    def __init__(self,name: str, price: float, category: ProductCategory, production_date: datetime,expiration_date: datetime,product_id = None):
+    def __init__(self,name: str, price: float, category: ProductCategory, production_date: datetime,expiration_date: datetime):
         self.__name: str = name
         self.__price : float = price
         self.__category: ProductCategory = category
         self.__production_date: datetime = production_date
         self.__expiration_date: datetime = expiration_date
-        self.product_id: Union[None, int] = product_id
+
     @property
     def name(self):
         return self.__name
@@ -130,7 +129,7 @@ class FoodProduct:
 
 
     def __str__(self):
-        return (f'id={self.product_id},name={self.__name}, price={self.__price}, category={self.__category}, production date = {self.__production_date}'
+        return (f'name={self.__name}, price={self.__price}, category={self.__category}, production date = {self.__production_date}'
                 f'expire date = {self.__expiration_date}, remaining_days: {self.remaining}')
 
 
